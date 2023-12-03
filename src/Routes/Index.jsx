@@ -4,7 +4,7 @@ import profileImage from "../Assets/bunny-rocket.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Image } from "react-bootstrap";
-import Projects from "../Projects";
+import Projects from "../Components/Projects";
 
 export default function Index() {
   // const posts = useLoaderData();
@@ -27,7 +27,6 @@ export default function Index() {
           </div>
         </div>
         <div className="image d-flex justify-content-center">
-          {/* <img src={profileImage} alt="profile" /> */}
           <Image src={profileImage} fluid />
         </div>
       </div>

@@ -1,8 +1,8 @@
-import Grid from "./Routes/Grid";
-import portfolioImage from "./Assets/portfolio.png";
-import stickerImage from "./Assets/sticker.png";
-import smallWinsImage from "./Assets/small-wins.png";
-import spotlightImage from "./Assets/spotlight.png";
+import Grid from "../Routes/Grid";
+import portfolioImage from "../Assets/portfolio.png";
+import stickerImage from "../Assets/sticker.png";
+import smallWinsImage from "../Assets/small-wins.png";
+import spotlightImage from "../Assets/spotlight.png";
 
 export default function Projects() {
   const placeholderImages = [

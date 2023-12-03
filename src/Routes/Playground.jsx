@@ -1,4 +1,4 @@
-import WorkCard from "../WorkCard";
+import WorkCard from "../Components/WorkCard";
 import { Spotify } from "react-spotify-embed";
 import { Row, Col } from "react-bootstrap";
 
@@ -21,7 +21,8 @@ export default function Playground() {
     "@sarahtonindraws",
     "Elaborate Notion pages",
   ];
-  const picnicPalsDescription = "Art, UI, animations, and narrative";
+  const picnicPalsDescription =
+    "A 2D geometric puzzle game I made using Unity, Procreate, and Figma";
   const cookBakeDescription = "Stuff I make that I can eat 🤰🏻";
   const artDescription = "Stuff I draw";
   const notionDescription = "My brain in digital form";

@@ -32,6 +32,16 @@ img {
   margin-top: 5px;
 }
 
+.sunset-image {
+  transition: transform 0.3s;
+  margin: 0 auto;
+}
+.sunset-image:hover {
+  transform: scale(
+    1.1
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 @keyframes floating {
   0% {
     transform: translate(0, 0px);

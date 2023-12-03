@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import WorkCard from "../WorkCard";
+import WorkCard from "../Components/WorkCard";
 
 export default function Grid(props) {
   return (
