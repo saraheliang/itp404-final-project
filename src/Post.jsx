@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function PostCard(props) {
+export default function Post(props) {
   return (
     <div className="card mb-3">
       <div className="card-body">
