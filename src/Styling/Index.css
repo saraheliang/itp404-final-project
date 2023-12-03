@@ -19,6 +19,9 @@ img {
 .social-media a {
   margin-right: 1em;
 }
+.projects-container {
+  margin-bottom: 5%;
+}
 
 .image {
   animation-name: floating;

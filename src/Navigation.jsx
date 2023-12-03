@@ -9,22 +9,22 @@ export default function Navigation() {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li key="projects" className="nav-item">
               <Link to="/" className="nav-link">
-                Home
+                Projects
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/coding" className="nav-link">
-                Coding
-              </Link>
-            </li>
-            <li className="nav-item">
+            <li key="playground" className="nav-item">
               <Link to="/playground" className="nav-link">
                 Playground
               </Link>
             </li>
-            <li className="nav-item">
+            <li key="about" className="nav-item">
+              <Link to="/about" className="nav-link">
+                About
+              </Link>
+            </li>
+            <li key="contact" className="nav-item">
               <Link to="/contact" className="nav-link">
                 Contact
               </Link>

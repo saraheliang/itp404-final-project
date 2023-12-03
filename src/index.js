@@ -5,10 +5,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Index from "./Routes/Index";
-import Coding from "./Routes/Coding";
+// import Projects from "./Routes/Projects";
 import Root from "./Routes/Root";
 import Playground from "./Routes/Playground";
 import Contact from "./Routes/Contact";
+import About from "./Routes/About";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +21,12 @@ const router = createBrowserRouter([
         element: <Index />,
       },
       {
-        path: "/coding",
-        element: <Coding />,
-      },
-      {
         path: "/playground",
         element: <Playground />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/contact",
