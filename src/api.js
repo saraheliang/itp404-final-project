@@ -64,3 +64,8 @@ export function savePost(data) {
     return response.json();
   });
 }
+
+//use DELETE method
+export function deletePost(postId) {
+  return fetch(`${baseUrl}/posts/${postId}`, { method: "DELETE" });
+}

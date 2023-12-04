@@ -2,7 +2,7 @@ import { Button, Image, Modal } from "react-bootstrap";
 import sunsetImage from "../Assets/sunset.jpg";
 import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { savePost } from "../api";
+import { deletePost, fetchPosts, savePost } from "../api";
 import { ToastContainer, toast } from "react-toastify";
 
 import "../Styling/About.css";
@@ -12,7 +12,9 @@ export default function About() {
     document.title = "About Me";
   }, []);
 
-  const posts = useLoaderData();
+  const loadedPosts = useLoaderData();
+
+  const [posts, setPosts] = useState(loadedPosts);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -60,7 +62,18 @@ export default function About() {
       ) : null}
       <div>
         {posts.map((post) => {
-          return <PostCard post={post} key={post.id} />;
+          return (
+            <PostCard
+              post={post}
+              key={post.id}
+              onDelete={() => {
+                fetchPosts().then((posts) => {
+                  console.log(posts);
+                  setPosts(posts);
+                });
+              }}
+            />
+          );
         })}
       </div>
     </div>
@@ -114,6 +127,17 @@ function PostCard(props) {
             className="delete-btn btn"
             variant="outline-secondary"
             size="sm"
+            onClick={() => {
+              deletePost(props.post.id).then(
+                () => {
+                  toast.success("You successfully deleted the post.");
+                  props.onDelete();
+                },
+                () => {
+                  toast.error("Oops! Something went wrong. Please try again.");
+                }
+              );
+            }}
           >
             delete
           </Button>
