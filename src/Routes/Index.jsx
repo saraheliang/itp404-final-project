@@ -21,10 +21,18 @@ export default function Index() {
           </h1>
           <p>Currently studying at the University of Southern California.</p>
           <div className="social-media">
-            <a href="https://www.linkedin.com/in/saraheliang/">
+            <a
+              href="https://www.linkedin.com/in/saraheliang/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
             </a>
-            <a href="https://github.com/saraheliang">
+            <a
+              href="https://github.com/saraheliang"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FontAwesomeIcon icon={faGithub} size="2x" />
             </a>
           </div>
