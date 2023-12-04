@@ -50,9 +50,26 @@ export function saveComment(data) {
 
 // use POST method
 export function savePost(data) {
-  // make a post request to /comments
+  // make a post request to /posts
   return fetch(`${baseUrl}/posts/`, {
     method: "POST",
+    //   content of what you're going to send to be posted
+    body: JSON.stringify(data),
+    headers: {
+      //   telling the application that we're sending json in the fetch body
+      //   api will know to parse the json and put it into this db.json file
+      "Content-type": "application/json",
+    },
+  }).then((response) => {
+    return response.json();
+  });
+}
+
+// use PATCH method to edit a post
+export function updatePost(postId, data) {
+  // make a patch request to /posts/postid
+  return fetch(`${baseUrl}/posts/${postId}`, {
+    method: "PUT",
     //   content of what you're going to send to be posted
     body: JSON.stringify(data),
     headers: {

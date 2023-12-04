@@ -2,7 +2,7 @@ import { Button, Image, Modal } from "react-bootstrap";
 import sunsetImage from "../Assets/sunset.jpg";
 import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { deletePost, fetchPosts, savePost } from "../api";
+import { deletePost, fetchPosts, savePost, updatePost } from "../api";
 import { ToastContainer, toast } from "react-toastify";
 
 import "../Styling/About.css";
@@ -72,6 +72,12 @@ export default function About() {
                   setPosts(posts);
                 });
               }}
+              onEdit={() => {
+                fetchPosts().then((posts) => {
+                  console.log(posts);
+                  setPosts(posts);
+                });
+              }}
             />
           );
         })}
@@ -120,6 +126,7 @@ function PostCard(props) {
               show={show}
               handleShow={handleShow}
               handleClose={handleClose}
+              onEdit={props.onEdit}
             />
           ) : null}
           <Button
@@ -158,16 +165,22 @@ function ModalForm(props) {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            // save the comment now
-            // saveComment({
-            //   body: comment,
-            //   postId: props.postId,
-            // }).then(() => {
-            //   // then empty out text area
-            //   setComment("");
-            // toast.success("Yay! You commented.");
-            // });
-            console.log("you pressed submit");
+            // update the post now
+            updatePost(props.post.id, {
+              userId: "1",
+              title: title,
+              description: description,
+              body: details,
+            }).then(
+              () => {
+                toast.success("Yay! You updated a post.");
+                props.onEdit();
+              },
+              () => {
+                toast.error("Oops! Something went wrong. Please try again.");
+              }
+            );
+            console.log("you pressed submit for an edit modal");
             props.handleClose();
           }}
         >
@@ -275,7 +288,7 @@ function BlankModalForm(props) {
                 setTitle("");
                 setDescription("");
                 setDetails("");
-                toast.success("Yay! You commented.");
+                toast.success("Yay! You made a post.");
               },
               () => {
                 toast.error("Oops! Something went wrong. Please try again.");
