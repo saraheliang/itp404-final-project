@@ -4,6 +4,7 @@ import stickerImage1 from "../Assets/sticker.png";
 import smallWinsImage1 from "../Assets/small-wins.png";
 import spotlightImage1 from "../Assets/spotlight.png";
 import { Image } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Project() {
   const portfolioImage = portfolioImage1;
@@ -12,6 +13,11 @@ export default function Project() {
   const spotlightImage = spotlightImage1;
 
   const project = useLoaderData();
+
+  useEffect(() => {
+    document.title = `${project.title}`;
+  }, [project.title]);
+
   return (
     <>
       <h1>{project.title}</h1>

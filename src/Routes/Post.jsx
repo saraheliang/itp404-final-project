@@ -1,16 +1,18 @@
 import { useLoaderData } from "react-router-dom";
 import CommentForm from "../Components/CommentForm";
-// import { fetchUserById } from "../api";
+import { useEffect, useState } from "react";
+import { fetchPostById } from "../api";
 
 export default function Post() {
-  const post = useLoaderData();
+  const loadedPost = useLoaderData();
+  const [post, setPost] = useState(loadedPost);
+
+  useEffect(() => {
+    document.title = `${post.title}`;
+  }, [post.title]);
 
   return (
     <div className="post-page">
-      {/* <h1>{post.title}</h1>
-      <h4>By {post.user.name}</h4>
-
-      <p>{post.body}</p> */}
       <h1>{post.title}</h1>
       <h5>{post.description}</h5>
       <h4>By {post.user.name}</h4>
@@ -27,7 +29,14 @@ export default function Post() {
         })}
       </ol>
 
-      <CommentForm postId={post.id} />
+      <CommentForm
+        postId={post.id}
+        onSubmitCommentForm={() => {
+          fetchPostById(post.id).then((post) => {
+            setPost(post);
+          });
+        }}
+      />
     </div>
   );
 }

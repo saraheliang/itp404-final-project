@@ -1,4 +1,4 @@
-import { Spotify } from "react-spotify-embed";
+// import { Spotify } from "react-spotify-embed";
 
 import picnicPalsImage from "../Assets/mockup.png";
 import cookBakeImage from "../Assets/foodAct.png";
@@ -47,12 +47,17 @@ export default function Playground() {
         hasButton={false}
       />
       <br></br>
-      <div className="d-flex justify-content-center">
+      {/* <div className="justify-content-center" style={{ marginTop: "5%" }}>
         <div>
-          <p>...check out my recommendations and/or give me recs!</p>
-          <Spotify link="https://open.spotify.com/episode/4TUM7gWyA2lsrJCrOyqEeU?si=5b1ce8b3c1524ff8" />
+          <div style={{ textAlign: "center" }}>
+            <p>Playing...</p>
+          </div>
+          <Spotify
+            wide
+            link="https://open.spotify.com/episode/4TUM7gWyA2lsrJCrOyqEeU?si=5b1ce8b3c1524ff8"
+          />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

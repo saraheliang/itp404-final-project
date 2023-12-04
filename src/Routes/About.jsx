@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 // import { Row, Col } from "react-bootstrap";
 
+import { Spotify } from "react-spotify-embed";
 import "../Styling/About.css";
 
 export default function About() {
@@ -21,23 +22,27 @@ export default function About() {
     <div>
       <div className="parent index-page d-flex align-items-center">
         <div className="child">
-          <h1>Learn more about me in the form of how I find joy ✨</h1>
+          <h1>Learn more about me in the form of how I find joy 😙</h1>
           <p>
             <b>Currently listening to</b> the{" "}
             <i>Hunger Games: Ballad of Songbird & Snakes</i> audiobook & Spotify
-            playlist.
+            playlist. <b>Currently watching</b> too much analysis on the series.
           </p>
+          {/* <Spotify
+            wide
+            link="https://open.spotify.com/playlist/37i9dQZF1DWT3BGkpbwZZs?si=77f75ffccc6a4541"
+          /> */}
         </div>
         <div className="sunset-image d-flex justify-content-center">
           <Image src={sunsetImage} fluid />
         </div>
       </div>
       <h2>Recs 👀</h2>
-      <p>
+      <h6>
         These are my recommendations for all things movies/shows, recipes,
         music, wellness, mindset, outdoor-sy activities, matcha shops, study
         spots, and more.
-      </p>
+      </h6>
       <Button className="add-btn" variant="primary" onClick={handleShow}>
         + Add Rec
       </Button>
@@ -99,6 +104,7 @@ function PostCard(props) {
               // }).then(() => {
               //   // then empty out text area
               //   setComment("");
+              // toast.success("Yay! You commented.");
               // });
               console.log("you pressed submit");
             }}
