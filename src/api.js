@@ -15,6 +15,19 @@ export function fetchPostById(postId) {
   );
 }
 
+export function fetchProjectById(projectId) {
+  return fetch(`${baseUrl}/projects/${projectId}?_expand=user`).then(
+    (response) => {
+      return response.json();
+    }
+  );
+}
+// export function fetchUserById(userId) {
+//   return fetch(`${baseUrl}/users/${userId}`).then((response) => {
+//     return response.json();
+//   });
+// }
+
 // going to add onto this file for CREATING and DELETING
 
 // this will receive the data for the comment

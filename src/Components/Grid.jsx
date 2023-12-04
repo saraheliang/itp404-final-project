@@ -17,6 +17,9 @@ export default function Grid(props) {
               image={props.images[idx]}
               title={props.titles[idx]}
               description={props.descriptions[idx]}
+              hasButton={props.hasButton}
+              link={props.link}
+              projectIdx={idx + 1}
             />
           </Col>
         ))}

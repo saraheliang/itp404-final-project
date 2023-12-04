@@ -14,7 +14,7 @@ export default function Recommendations() {
       <form>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Recommendation</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div class="mb-3">
@@ -31,22 +31,36 @@ export default function Recommendations() {
                 TV shows, hiking spots, new music, etc.
               </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="message" className="form-label">
+            <div class="mb-3">
+              <label for="description" class="form-label">
                 Description
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                aria-describedby="descriptionHelp"
+              ></input>
+              <div id="descriptionHelp" class="form-text">
+                A short description
+              </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="details" className="form-label">
+                Details
               </label>
               <textarea
                 className="form-control"
-                id="message"
+                id="details"
                 rows="3"
                 // value={message}
                 // onChange={(event) => {
                 //   setMessage(event.target.value.toUpperCase());
                 // }}
-                aria-describedby="messageHelp"
+                aria-describedby="detailsHelp"
               />
-              <div id="messageHelp" class="form-text">
-                Favorite thing about it. More details.
+              <div id="detailsHelp" class="form-text">
+                More details such as ranking, most notable feature, etc.
               </div>
             </div>
           </Modal.Body>

@@ -3,37 +3,80 @@
     {
       "id": "1",
       "userId": "1",
-      "title": "Deploying React Projects to Surge.sh",
-      "body": "Learn how to deploy your Create React App project to Surge.sh."
+      "title": "My fav matcha store 🍵",
+      "description": "Ceremonial grade matcha! So rich! :)",
+      "body": "I LOVE THIS CAFE! Seating is amazing and the quality of the matcha is truly elite. I'd go here on a date or to study."
     },
     {
       "id": "2",
       "userId": "1",
-      "title": "Aborting Fetch Requests with AbortController",
-      "body": "Learn how to abort fetch requests with the AbortController class and how to do it in a React component."
+      "title": "How to Train Your Dragon",
+      "description": "Best heart-warming movie.",
+      "body": "THIS MOVIE DESERVES EVERYTHING AND MORE. It is musically, visually, and narrative-wise unlike any other animated movie."
     }
   ],
   "users": [
     {
       "id": "1",
-      "name": "David Tang"
+      "name": "Sarah Liang"
+    },
+    {
+      "id": "2",
+      "name": "Michelle Liang"
     }
   ],
   "comments": [
     {
       "id": "1",
+      "userId": "2",
       "body": "Super helpful, thanks!",
       "postId": "1"
     },
     {
       "id": "2",
-      "body": "Love that this is free!",
+      "userId": "2",
+      "body": "Wow, didn't know about this place!",
       "postId": "1"
     },
     {
       "id": "3",
-      "body": "Wow, didn't know about this!",
+      "userId": "2",
+      "body": "Love this movie!!",
       "postId": "2"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "userId": "1",
+      "title": "Personal Portfolio",
+      "description": "ReactJS, JavaScript, JSON Server, Bootstrap",
+      "body": "My most recent work : ). Built December 2023",
+      "imageName": "portfolioImage"
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "title": "Sticker Goals",
+      "description": "React Native, JavaScript, Expo Go, Firebase",
+      "body": "I worked on this from September 2022 - May 2023",
+      "imageName": "stickerImage"
+    },
+    {
+      "id": "3",
+      "userId": "1",
+      "title": "Small Wins",
+      "description": "JavaScript, HTML/CSS, PHP, MySQL",
+      "body": "I made this as a final project for ITP 303.",
+      "imageName": "smallWinsImage"
+    },
+    {
+      "id": "4",
+      "userId": "1",
+      "title": "SPOTlight",
+      "description": "JavaScript, HTML/CSS, Spotify AP",
+      "body": "A hackathon project winner for 'Best Use of Curriculum'",
+      "imageName": "spotlightImage"
     }
   ]
 }

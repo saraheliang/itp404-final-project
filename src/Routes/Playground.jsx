@@ -44,6 +44,7 @@ export default function Playground() {
         images={placeholderImages}
         titles={titles}
         descriptions={descriptions}
+        hasButton={false}
       />
       <br></br>
       <div className="d-flex justify-content-center">
