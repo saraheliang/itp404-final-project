@@ -2,6 +2,8 @@ import { Button, Image, Modal } from "react-bootstrap";
 import sunsetImage from "../Assets/sunset.jpg";
 import { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { savePost } from "../api";
+import { ToastContainer, toast } from "react-toastify";
 
 import "../Styling/About.css";
 
@@ -40,7 +42,13 @@ export default function About() {
         music, wellness, mindset, outdoor-sy activities, matcha shops, study
         spots, and more.
       </p>
-      <Button className="add-btn" variant="primary" onClick={handleShow}>
+      <ToastContainer position="bottom-left" autoClose={5000} />
+      <Button
+        type="button"
+        className="add-btn btn"
+        variant="primary"
+        onClick={handleShow}
+      >
         + Add Rec
       </Button>
       {show ? (
@@ -81,7 +89,8 @@ function PostCard(props) {
         <div className="edit-delete-container">
           {/* SHOULD BE A HANDLE EDIT AND ALL FORM FIELDS SHOULD BE FILLED */}
           <Button
-            className="edit-btn"
+            type="button"
+            className="edit-btn btn"
             variant="outline-primary"
             size="sm"
             onClick={() => {
@@ -100,7 +109,12 @@ function PostCard(props) {
               handleClose={handleClose}
             />
           ) : null}
-          <Button className="delete-btn" variant="outline-secondary" size="sm">
+          <Button
+            type="button"
+            className="delete-btn btn"
+            variant="outline-secondary"
+            size="sm"
+          >
             delete
           </Button>
         </div>
@@ -130,6 +144,7 @@ function ModalForm(props) {
             // toast.success("Yay! You commented.");
             // });
             console.log("you pressed submit");
+            props.handleClose();
           }}
         >
           <Modal.Header closeButton>
@@ -196,10 +211,14 @@ function ModalForm(props) {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={props.handleClose}>
+            <Button
+              type="button"
+              variant="secondary btn"
+              onClick={props.handleClose}
+            >
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={props.handleClose}>
+            <Button type="submit" variant="primary">
               Submit
             </Button>
           </Modal.Footer>
@@ -220,16 +239,26 @@ function BlankModalForm(props) {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            // save the comment now
-            // saveComment({
-            //   body: comment,
-            //   postId: props.postId,
-            // }).then(() => {
-            //   // then empty out text area
-            //   setComment("");
-            // toast.success("Yay! You commented.");
-            // });
+            // save the post now
+            savePost({
+              // userId: ,
+              title: title,
+              description: description,
+              body: details,
+            }).then(
+              () => {
+                // then empty out text area
+                setTitle("");
+                setDescription("");
+                setDetails("");
+                toast.success("Yay! You commented.");
+              },
+              () => {
+                toast.error("Oops! Something went wrong. Please try again.");
+              }
+            );
             console.log("you pressed submit");
+            props.handleClose();
           }}
         >
           <Modal.Header closeButton>
@@ -296,10 +325,14 @@ function BlankModalForm(props) {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={props.handleClose}>
+            <Button
+              type="button"
+              variant="secondary btn"
+              onClick={props.handleClose}
+            >
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={props.handleClose}>
+            <Button type="submit" variant="primary btn">
               Submit
             </Button>
           </Modal.Footer>

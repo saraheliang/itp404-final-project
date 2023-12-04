@@ -22,7 +22,7 @@ export function fetchProjectById(projectId) {
     }
   );
 }
-// export function fetchUserById(userId) {
+// export function fetchUser/usernameById(userId) {
 //   return fetch(`${baseUrl}/users/${userId}`).then((response) => {
 //     return response.json();
 //   });
@@ -35,6 +35,23 @@ export function fetchProjectById(projectId) {
 export function saveComment(data) {
   // make a post request to /comments
   return fetch(`${baseUrl}/comments/`, {
+    method: "POST",
+    //   content of what you're going to send to be posted
+    body: JSON.stringify(data),
+    headers: {
+      //   telling the application that we're sending json in the fetch body
+      //   api will know to parse the json and put it into this db.json file
+      "Content-type": "application/json",
+    },
+  }).then((response) => {
+    return response.json();
+  });
+}
+
+// use POST method
+export function savePost(data) {
+  // make a post request to /comments
+  return fetch(`${baseUrl}/posts/`, {
     method: "POST",
     //   content of what you're going to send to be posted
     body: JSON.stringify(data),
