@@ -50,7 +50,6 @@ export default function About() {
           handleClose={handleClose}
         />
       ) : null}
-      {/* <Recommendations /> */}
       <div>
         {posts.map((post) => {
           return <PostCard post={post} key={post.id} />;
@@ -60,6 +59,7 @@ export default function About() {
   );
 }
 
+// PRESSING DELETE MEANS DELETING AN INSTANCE OF THIS
 function PostCard(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -109,13 +109,11 @@ function PostCard(props) {
   );
 }
 
+// FOR UPDATING
 function ModalForm(props) {
   const [title, setTitle] = useState(props.post.title || "");
   const [description, setDescription] = useState(props.post.description || "");
   const [details, setDetails] = useState(props.post.body || "");
-  // console.log(title);
-  // console.log(description);
-  // console.log(details);
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -211,6 +209,7 @@ function ModalForm(props) {
   );
 }
 
+// FOR CREATING/POSTING
 function BlankModalForm(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
