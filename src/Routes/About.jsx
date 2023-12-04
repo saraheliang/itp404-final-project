@@ -58,6 +58,12 @@ export default function About() {
           show={show}
           handleShow={handleShow}
           handleClose={handleClose}
+          onSave={() => {
+            fetchPosts().then((posts) => {
+              console.log(posts);
+              setPosts(posts);
+            });
+          }}
         />
       ) : null}
       <div>
@@ -278,7 +284,7 @@ function BlankModalForm(props) {
             event.preventDefault();
             // save the post now
             savePost({
-              // userId: ,
+              userId: "1",
               title: title,
               description: description,
               body: details,
@@ -289,6 +295,7 @@ function BlankModalForm(props) {
                 setDescription("");
                 setDetails("");
                 toast.success("Yay! You made a post.");
+                props.onSave();
               },
               () => {
                 toast.error("Oops! Something went wrong. Please try again.");

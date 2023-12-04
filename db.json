@@ -1,11 +1,11 @@
 {
   "posts": [
     {
-      "id": "1",
       "userId": "1",
       "title": "My fav matcha store 🍵",
       "description": "Ceremonial grade matcha! So rich! :)",
-      "body": "I LOVE THIS CAFE! Seating is amazing and the quality of the matcha is truly elite. I'd go here on a date or to study."
+      "body": "I LOVE THIS CAFE! Seating is amazing and the quality of the matcha is truly elite. I'd go here on a date or to study.",
+      "id": "1"
     },
     {
       "id": "2",
@@ -20,6 +20,13 @@
       "description": "test descrip",
       "body": "test details",
       "id": "8wuiAsN"
+    },
+    {
+      "userId": "1",
+      "title": "Something",
+      "description": "somethig",
+      "body": "something",
+      "id": "_OD1iVj"
     }
   ],
   "users": [
