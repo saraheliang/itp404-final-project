@@ -1,5 +1,4 @@
-// import { Link } from "react-router-dom";
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 // import placeholderImage from "./Assets/mockup.png";
@@ -15,6 +14,10 @@ export default function WorkCard(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
+        {/* DYNAMIC SEGMENT HERE */}
+        <Button variant="primary" href="/">
+          See more
+        </Button>
       </Card.Body>
     </Card>
   );

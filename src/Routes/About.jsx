@@ -1,20 +1,19 @@
-import Grid from "./Grid";
-import { Card, Image } from "react-bootstrap";
-import favMediaImage from "../Assets/favMedia.png";
+import { Image } from "react-bootstrap";
 import sunsetImage from "../Assets/sunset.jpg";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Recommendations from "../Components/Recommendations";
 
 export default function About() {
-  let navigate = useNavigate();
-  const routeChange = () => {
-    let path = "";
-    navigate(path);
-  };
+  // const posts = useLoaderData();
+  useEffect(() => {
+    document.title = "About Me";
+  }, []);
+
   return (
     <div>
       <div className="parent index-page d-flex align-items-center">
         <div className="child">
-          <h1>Learn more about me in the form of how I find joy! ✨.</h1>
+          <h1>Learn more about me in the form of how I find joy ✨</h1>
           <p>
             <b>Currently listening to</b> the{" "}
             <i>Hunger Games: Ballad of Songbird & Snakes</i> audiobook & Spotify
@@ -31,33 +30,7 @@ export default function About() {
         music, wellness, mindset, outdoor-sy activities, matcha shops, study
         spots, and more.
       </p>
-      <button className="btn btn-primary" type="button" onClick={routeChange}>
-        Add a rec!
-      </button>
-      <Card>
-        <Card.Body>
-          <Card.Title>Matcha shop</Card.Title>
-          <Card.Text>Culinary grade and rich matcha</Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>Matcha shop</Card.Title>
-          <Card.Text>Culinary grade and rich matcha</Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>Matcha shop</Card.Title>
-          <Card.Text>Culinary grade and rich matcha</Card.Text>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
-          <Card.Title>Matcha shop</Card.Title>
-          <Card.Text>Culinary grade and rich matcha</Card.Text>
-        </Card.Body>
-      </Card>
+      <Recommendations />
     </div>
   );
 }

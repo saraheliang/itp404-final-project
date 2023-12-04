@@ -1,4 +1,4 @@
-import Grid from "../Routes/Grid";
+import Grid from "./Grid";
 import portfolioImage from "../Assets/portfolio.png";
 import stickerImage from "../Assets/sticker.png";
 import smallWinsImage from "../Assets/small-wins.png";

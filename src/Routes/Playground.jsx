@@ -1,14 +1,16 @@
-import WorkCard from "../Components/WorkCard";
 import { Spotify } from "react-spotify-embed";
-import { Row, Col } from "react-bootstrap";
 
 import picnicPalsImage from "../Assets/mockup.png";
 import cookBakeImage from "../Assets/foodAct.png";
 import artImage from "../Assets/art.png";
 import notionImage from "../Assets/notion.png";
-import Grid from "./Grid";
+import Grid from "../Components/Grid";
+import { useEffect } from "react";
 
 export default function Playground() {
+  useEffect(() => {
+    document.title = "Playground";
+  }, []);
   const placeholderImages = [
     picnicPalsImage,
     cookBakeImage,
