@@ -167,7 +167,7 @@ function ModalForm(props) {
   const [details, setDetails] = useState(props.post.body || "");
 
   // validation state
-  const [validated, setValidated] = useState(false);
+  // const [isValidated, setIsValidated] = useState(true);
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -177,15 +177,6 @@ function ModalForm(props) {
           onSubmit={(event) => {
             // the form should be stopped frombeing able to submit
             event.preventDefault();
-
-            const form = event.currentTarget;
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-
-            setValidated(true);
-
             // update the post now
             updatePost(props.post.id, {
               userId: "1",
@@ -225,7 +216,11 @@ function ModalForm(props) {
                 }}
               ></input>
               {title ? (
-                <div id="titleHelp" className="form-text">
+                <div
+                  id="titleHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
                   Looks good!
                 </div>
               ) : (
@@ -233,13 +228,13 @@ function ModalForm(props) {
                   You must provide a title!
                 </div>
               )}
-              <div class="valid-feedback">Looks good!</div>
             </div>
             <div className="mb-3">
               <label htmlFor="description" className="form-label">
                 Description
               </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="description"
@@ -250,7 +245,11 @@ function ModalForm(props) {
                 }}
               ></input>
               {description ? (
-                <div id="descriptionHelp" className="form-text">
+                <div
+                  id="descriptionHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
                   Looks good!
                 </div>
               ) : (
@@ -268,6 +267,7 @@ function ModalForm(props) {
                 Details
               </label>
               <textarea
+                required
                 className="form-control"
                 id="details"
                 rows="3"
@@ -277,9 +277,20 @@ function ModalForm(props) {
                   setDetails(event.target.value);
                 }}
               />
-              <div id="detailsHelp" className="form-text">
-                Error handling for details.
-              </div>
+              {details ? (
+                <div
+                  id="detailsHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
+                  Looks good!
+                </div>
+              ) : (
+                // set isValidated to false somewhere around here to prevent the form from being able to be submitted
+                <div id="detailsHelp" className="form-text">
+                  You must provide details!
+                </div>
+              )}
             </div>
           </Modal.Body>
           <Modal.Footer>
@@ -305,8 +316,6 @@ function BlankModalForm(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [details, setDetails] = useState("");
-
-  const [validated, setValidated] = useState(false);
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -314,14 +323,6 @@ function BlankModalForm(props) {
           novalidate
           onSubmit={(event) => {
             event.preventDefault();
-
-            const form = event.currentTarget;
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-
-            setValidated(true);
             // save the post now
             savePost({
               userId: "1",
@@ -365,7 +366,11 @@ function BlankModalForm(props) {
                 }}
               ></input>
               {title ? (
-                <div id="titleHelp" className="form-text">
+                <div
+                  id="titleHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
                   Looks good!
                 </div>
               ) : (
@@ -391,7 +396,11 @@ function BlankModalForm(props) {
                 }}
               ></input>
               {description ? (
-                <div id="descriptionHelp" className="form-text">
+                <div
+                  id="descriptionHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
                   Looks good!
                 </div>
               ) : (
@@ -409,6 +418,7 @@ function BlankModalForm(props) {
                 Details
               </label>
               <textarea
+                required
                 className="form-control"
                 id="details"
                 rows="3"
@@ -418,9 +428,23 @@ function BlankModalForm(props) {
                   setDetails(event.target.value);
                 }}
               />
-              <div id="detailsHelp" className="form-text">
+              {details ? (
+                <div
+                  id="detailsHelp"
+                  className="form-text"
+                  style={{ color: "green" }}
+                >
+                  Looks good!
+                </div>
+              ) : (
+                // set isValidated to false somewhere around here to prevent the form from being able to be submitted
+                <div id="detailsHelp" className="form-text">
+                  You must provide details!
+                </div>
+              )}
+              {/* <div id="detailsHelp" className="form-text">
                 Error handling for details.
-              </div>
+              </div> */}
             </div>
           </Modal.Body>
           <Modal.Footer>

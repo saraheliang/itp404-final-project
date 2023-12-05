@@ -34,6 +34,7 @@ export default function CommentForm(props) {
       <input type="hidden" name="postId" value={props.postId} />
       <div className="form-floating mb-3">
         <input
+          required
           type="text"
           className="form-control"
           id="title"
@@ -44,9 +45,19 @@ export default function CommentForm(props) {
           }}
         ></input>
         <label htmlFor="name">Name</label>
+        {name ? (
+          <div id="nameHelp" className="form-text" style={{ color: "green" }}>
+            Looks good!
+          </div>
+        ) : (
+          <div id="nameHelp" className="form-text" style={{ color: "red" }}>
+            You must provide a name!
+          </div>
+        )}
       </div>
       <div className="form-floating mb-3">
         <textarea
+          required
           className="form-control"
           id="comment"
           value={comment}
@@ -55,6 +66,19 @@ export default function CommentForm(props) {
           }}
         />
         <label htmlFor="comment">Leave a comment</label>
+        {comment ? (
+          <div
+            id="commentHelp"
+            className="form-text"
+            style={{ color: "green" }}
+          >
+            Looks good!
+          </div>
+        ) : (
+          <div id="commentHelp" className="form-text" style={{ color: "red" }}>
+            You must provide a comment!
+          </div>
+        )}
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
