@@ -92,7 +92,6 @@ export default function About() {
   );
 }
 
-// PRESSING DELETE MEANS DELETING AN INSTANCE OF THIS
 function PostCard(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
