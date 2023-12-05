@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function CommentForm(props) {
   const [comment, setComment] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <form
@@ -13,12 +14,14 @@ export default function CommentForm(props) {
         // DO ERROR HANDLING HERE
         // save the comment now
         saveComment({
+          userName: name,
           body: comment,
           postId: props.postId,
         }).then(
           () => {
             // then empty out text area
             setComment("");
+            setName("");
             toast.success("Yay! You commented.");
             props.onSubmitCommentForm();
           },
@@ -29,6 +32,19 @@ export default function CommentForm(props) {
       }}
     >
       <input type="hidden" name="postId" value={props.postId} />
+      <div className="form-floating mb-3">
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          aria-describedby="titleHelp"
+          value={name}
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+        ></input>
+        <label htmlFor="name">Name</label>
+      </div>
       <div className="form-floating mb-3">
         <textarea
           className="form-control"

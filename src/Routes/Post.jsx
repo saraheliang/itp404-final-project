@@ -23,7 +23,7 @@ export default function Post() {
         {post.comments.map((comment) => {
           return (
             <li key={comment.id}>
-              {comment.body} | Posted by {comment.userId}
+              {comment.body} | Posted by <b>{comment.userName}</b>
             </li>
           );
         })}

@@ -165,12 +165,27 @@ function ModalForm(props) {
   const [title, setTitle] = useState(props.post.title || "");
   const [description, setDescription] = useState(props.post.description || "");
   const [details, setDetails] = useState(props.post.body || "");
+
+  // validation state
+  const [validated, setValidated] = useState(false);
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
         <form
+          novalidate
+          className="needs-validation"
           onSubmit={(event) => {
+            // the form should be stopped frombeing able to submit
             event.preventDefault();
+
+            const form = event.currentTarget;
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            setValidated(true);
+
             // update the post now
             updatePost(props.post.id, {
               userId: "1",
@@ -199,6 +214,7 @@ function ModalForm(props) {
                 Title
               </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="title"
@@ -208,9 +224,16 @@ function ModalForm(props) {
                   setTitle(event.target.value);
                 }}
               ></input>
-              <div id="titleHelp" className="form-text">
-                Error handling for the title
-              </div>
+              {title ? (
+                <div id="titleHelp" className="form-text">
+                  Looks good!
+                </div>
+              ) : (
+                <div id="titleHelp" className="form-text">
+                  You must provide a title!
+                </div>
+              )}
+              <div class="valid-feedback">Looks good!</div>
             </div>
             <div className="mb-3">
               <label htmlFor="description" className="form-label">
@@ -226,9 +249,19 @@ function ModalForm(props) {
                   setDescription(event.target.value);
                 }}
               ></input>
-              <div id="descriptionHelp" className="form-text">
+              {description ? (
+                <div id="descriptionHelp" className="form-text">
+                  Looks good!
+                </div>
+              ) : (
+                // set isValidated to false somewhere around here to prevent the form from being able to be submitted
+                <div id="descriptionHelp" className="form-text">
+                  You must provide a description!
+                </div>
+              )}
+              {/* <div id="descriptionHelp" className="form-text">
                 Error handling for description.
-              </div>
+              </div> */}
             </div>
             <div className="mb-3">
               <label htmlFor="details" className="form-label">
@@ -238,10 +271,6 @@ function ModalForm(props) {
                 className="form-control"
                 id="details"
                 rows="3"
-                // value={message}
-                // onChange={(event) => {
-                //   setMessage(event.target.value.toUpperCase());
-                // }}
                 aria-describedby="detailsHelp"
                 value={details}
                 onChange={(event) => {
@@ -276,12 +305,23 @@ function BlankModalForm(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [details, setDetails] = useState("");
+
+  const [validated, setValidated] = useState(false);
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
         <form
+          novalidate
           onSubmit={(event) => {
             event.preventDefault();
+
+            const form = event.currentTarget;
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            setValidated(true);
             // save the post now
             savePost({
               userId: "1",
@@ -314,6 +354,7 @@ function BlankModalForm(props) {
                 Title
               </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="title"
@@ -323,15 +364,23 @@ function BlankModalForm(props) {
                   setTitle(event.target.value);
                 }}
               ></input>
-              <div id="titleHelp" className="form-text">
-                Error handling for the title
-              </div>
+              {title ? (
+                <div id="titleHelp" className="form-text">
+                  Looks good!
+                </div>
+              ) : (
+                // set isValidated to false somewhere around here to prevent the form from being able to be submitted
+                <div id="titleHelp" className="form-text">
+                  You must provide a title!
+                </div>
+              )}
             </div>
             <div className="mb-3">
               <label htmlFor="description" className="form-label">
                 Description
               </label>
               <input
+                required
                 type="text"
                 className="form-control"
                 id="description"
@@ -341,9 +390,19 @@ function BlankModalForm(props) {
                   setDescription(event.target.value);
                 }}
               ></input>
-              <div id="descriptionHelp" className="form-text">
+              {description ? (
+                <div id="descriptionHelp" className="form-text">
+                  Looks good!
+                </div>
+              ) : (
+                // set isValidated to false somewhere around here to prevent the form from being able to be submitted
+                <div id="descriptionHelp" className="form-text">
+                  You must provide a description!
+                </div>
+              )}
+              {/* <div id="descriptionHelp" className="form-text">
                 Error handling for description.
-              </div>
+              </div> */}
             </div>
             <div className="mb-3">
               <label htmlFor="details" className="form-label">
@@ -353,10 +412,6 @@ function BlankModalForm(props) {
                 className="form-control"
                 id="details"
                 rows="3"
-                // value={message}
-                // onChange={(event) => {
-                //   setMessage(event.target.value.toUpperCase());
-                // }}
                 aria-describedby="detailsHelp"
                 value={details}
                 onChange={(event) => {
