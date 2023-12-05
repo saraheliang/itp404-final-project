@@ -18,7 +18,6 @@ export default function WorkCard(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
-        {/* DYNAMIC SEGMENT HERE */}
         {hasButton && (
           <Button variant="primary" href={`/projects/${props.projectIdx}`}>
             See more

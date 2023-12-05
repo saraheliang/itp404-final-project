@@ -16,10 +16,10 @@
     },
     {
       "userId": "1",
-      "title": "The Office",
-      "description": "test descrip",
-      "body": "test details",
-      "id": "8wuiAsN"
+      "title": "Hunger Games: Ballad of Songbird and Snakes",
+      "description": "Awesome movie!",
+      "body": "It has a good soundtrack, super complex topics, and amazing acting! 100000/10",
+      "id": "hkagWy7"
     }
   ],
   "users": [
@@ -81,6 +81,12 @@
       "body": "i also love matcha",
       "postId": "1",
       "id": "-fcDvD0"
+    },
+    {
+      "userName": "Sarah",
+      "body": "I also liked this movie!",
+      "postId": "hkagWy7",
+      "id": "rGxt_ER"
     }
   ],
   "projects": [

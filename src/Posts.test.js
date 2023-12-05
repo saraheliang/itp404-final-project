@@ -2,51 +2,42 @@ import { render, screen } from "@testing-library/react";
 
 function PostCard(props) {
   return (
-    <div className="card mb-3">
+    <div data-testid={`post-${props.post.id}`} className="card mb-3">
       <div className="card-body">
         <h5 className="card-title">{props.post.title}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">
-          By {props.post.user.name}
-        </h6>
-        <p className="card-text">
-          {props.post.description.substring(0, 100)}...
-        </p>
+        <p className="card-text">{props.post.description}</p>
       </div>
     </div>
   );
 }
 
-test("rendering posts", () => {
-  // Arrange
+describe("render posts", () => {
   const posts = [
-    {
-      userId: "1",
-      title: "My fav matcha store",
-      description: "Ceremonial grade matcha! So rich! :)",
-      body: "I LOVE THIS CAFE! Seating is amazing and the quality of the matcha is truly elite. I'd go here on a date or to study.",
-      id: "1",
-    },
-    {
-      id: "2",
-      userId: "1",
-      title: "How to Train Your Dragon",
-      description: "Best heart-warming movie.",
-      body: "THIS MOVIE DESERVES EVERYTHING AND MORE. It is musically, visually, and narrative-wise unlike any other animated movie.",
-    },
+    { id: 1, title: "Post 1", description: "Content 1" },
+    { id: 2, title: "Post 2", description: "Content 2" },
   ];
 
-  //Act
-  const { getByText, getAllByTestId } = render(
-    <div>
-      {posts.map((post) => {
-        return <PostCard data-testid="post" post={post} key={post.id} />;
-      })}
-    </div>
-  );
+  it("renders a list of PostCards", () => {
+    render(posts.map((post) => <PostCard key={post.id} post={post} />));
 
-  // Assert
-  // check that there's two posts (posts.length)
-  // expect(getByText("My fav matcha store")).toBeInTheDocument();
-  expect(getAllByTestId("post").length).toBe(2);
-  //
+    expect(screen.getByText("Post 1")).toBeInTheDocument();
+    expect(screen.getByText("Post 2")).toBeInTheDocument();
+  });
+
+  it("renders the correct number of PostCards", () => {
+    render(posts.map((post) => <PostCard key={post.id} post={post} />));
+
+    // Check number of PostCards rendered
+    posts.forEach((post) => {
+      expect(screen.getByTestId(`post-${post.id}`)).toBeInTheDocument();
+    });
+  });
+
+  it("renders the correct info in the PostCards", () => {
+    render(posts.map((post) => <PostCard key={post.id} post={post} />));
+
+    // Check correct info of PostCards
+    expect(screen.getByText("Content 1")).toBeInTheDocument();
+    expect(screen.getByText("Post 1")).toBeInTheDocument();
+  });
 });
